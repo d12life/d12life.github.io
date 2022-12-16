@@ -1,7 +1,7 @@
 ---
 layout: post
 author: d12life
-title: Bài 1 - Các use sử dụng trong quản trị Jira
+title: Bài 1 - Giới thiệu công cụ Jira
 ---
 
 Quản lý dự án, kiểm soát và theo dõi lỗi, kiểm soát và theo dõi Vấn đề phát sinh trong một tổ chức. Theo dõi và quản lý vấn đề và lỗi phát sinh trong quá trình của một dự án là một công việc tối quan trọng, nhưng rất ít các dự án được quản lý một cách hiệu quả.
