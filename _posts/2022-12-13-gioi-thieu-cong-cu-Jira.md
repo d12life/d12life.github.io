@@ -79,8 +79,9 @@ Một trong những tính năng nổi trội của phần mềm Jira chính là 
 - Hiển thị báo cáo thống kê dưới dạng biểu đồ hình tròn dựa trên tiêu chí thống kê do người dùng lựa chọn
 - Báo cáo số lượng issue được tạo trong một khoảng thời gian nhất định do người dùng lựa chọn
 ![](assets/images/lesson_1/jira-chart.png)
-# 2. Các use case sử dụng trong quản trị Jira
-## 2.1 Lấy ra danh dách tất cả các Project trong một tổ chức
+
+# 8. Một số trường hợp đặc biệt
+## 8.1 Lấy ra danh dách tất cả các Project trong một tổ chức
 Danh sách tất cả các dự án trong một tổ chức (bản thân tổ chức và các đơn vị thành viên) được yêu cầu cho việc quản trị nguồn lực và danh mục sản phẩm của tổ chức đó.
 
 Các bước thực hiện:
@@ -96,7 +97,7 @@ https://www.postman.com/downloads/
     
     Tool để convert response (dạng json) về file excel khá phổ biến trên internet và sẽ không được đề cập ở đây.
 
-## 2.2 Lấy ra danh dách tất cả các Project thuộc về một thành viên
+## 8.2 Lấy ra danh dách tất cả các Project thuộc về một thành viên
 Hiện tại Jira không hỗ trợ lấy ra các project của một user trên hệ thống Jira bằng một lệnh duy nhất.
 Các bước thực hiện
 1. Lấy ra tất cả các dự án (dùng quyền admin) sử dụng API GET /rest/api/2/project
