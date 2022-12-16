@@ -78,7 +78,7 @@ Một trong những tính năng nổi trội của phần mềm Jira chính là 
 - Hiển thị số lượng issue đã được tạo và số lượng issue đã được giải quyết trong một khoảng thời gian nhất định
 - Hiển thị báo cáo thống kê dưới dạng biểu đồ hình tròn dựa trên tiêu chí thống kê do người dùng lựa chọn
 - Báo cáo số lượng issue được tạo trong một khoảng thời gian nhất định do người dùng lựa chọn
-<image src="assets/images/lesson_1/jira-chart.png">
+![image](/assets/images/lesson_1/jira-chart.png)
 
 # 8. Một số trường hợp đặc biệt
 ## 8.1 Lấy ra danh dách tất cả các Project trong một tổ chức
@@ -118,7 +118,7 @@ Thực tế user tồn tại trong role của một project ko có nghĩa là us
 
 3. Nếu tìm được user trong bước 2 thì lưu project vào mảng dữ liệu.
 
-# 3. Tài liệu tham khảo
+# 9. Tài liệu tham khảo
 1. https://topdev.vn/blog/jira-la-gi/
 2. https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1/
 
