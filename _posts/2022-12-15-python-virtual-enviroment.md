@@ -99,7 +99,7 @@ $ pip install -r requirements.txt
 
 Bằng cách trên, các thông tin về gói cài đặt của dự án bao gồm tên gói cài đặt, phiên bản đang được cài sẽ được lưu lại trong file *requirements.txt*.
 
-## Tham khảo
+## 4. Tham khảo
 
 [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/)
 
