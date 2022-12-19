@@ -116,6 +116,17 @@ Train yolo
 !python train.py --batch 8 --cfg cfg/training/yolov7.yaml --epochs 200 --data data/mydataset.yaml --weights 'pretrain/yolov7.pt'
 ```
 
+Nhận diện ảnh vừa train: Yolo cấu hình mặc định những ảnh có confident < 0.5 sẽ không được hiển thị. Nếu muốn xem những ảnh này ta phải thêm tùy chọn --conf trong câu khi detect
+```
+%cd /content/drive/MyDrive/yolov7
+!python detect.py --weights /content/drive/MyDrive/yolov7/runs/train/exp3/weights/best.pt --source test/Chay-Pho-Co-9.jpg
+```
+
+Xem ảnh đã nhận diện
+```
+
+```
+
 # Tham khảo
 1. https://www.analyticsvidhya.com/blog/2022/08/how-to-train-a-custom-object-detection-model-with-yolov7/
 2. https://machinelearningprojects.net/train-yolov7-on-the-custom-dataset/
