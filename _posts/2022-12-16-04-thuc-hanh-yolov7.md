@@ -66,6 +66,8 @@ Cài đặt thư viện cần thiết để training model
 %cd /content/drive/MyDrive/yolov7
 !pip install -r requirements.txt
 ```
+Thực hiện annotation dữ liệu fire với công cụ labelimg, dữ liệu sau khi được gán nhãn có dạng như sau
+![image](/assets/images/lesson_7/935654ce-1185-4906-96bc-be74d7c5da46.png)
 
 Giải nén dữ liệu để training model
 ```
@@ -116,17 +118,20 @@ Train yolo
 !python train.py --batch 8 --cfg cfg/training/yolov7.yaml --epochs 200 --data data/mydataset.yaml --weights 'pretrain/yolov7.pt'
 ```
 
-Nhận diện ảnh vừa train: Yolo cấu hình mặc định những ảnh có confident < 0.5 sẽ không được hiển thị. Nếu muốn xem những ảnh này ta phải thêm tùy chọn --conf trong câu khi detect
+Nhận diện ảnh vừa train:
 ```
 %cd /content/drive/MyDrive/yolov7
-!python detect.py --weights /content/drive/MyDrive/yolov7/runs/train/exp3/weights/best.pt --source test/Chay-Pho-Co-9.jpg
+!python detect.py --weights /content/drive/MyDrive/yolov7/runs/train/exp/weights/best.pt --source test/Chay-Pho-Co-9.jpg --conf 0.2
 ```
+***Lưu ý***: Nếu không thấy bounding box xuất hiện trên ảnh sau khi detect thì có thể confident của ảnh không đạt được ngưỡng cấu hình mặc định của yolo, để vẽ bounding bõ ta cần hạ cấu hình confident sử dụng tùy chọn *--conf*
 
 Xem ảnh đã nhận diện
 ```
-
+from IPython.display import Image, display
+display(Image(filename="/content/drive/MyDrive/yolov7/runs/detect/exp2/Chay-Pho-Co-9.jpg"))
 ```
+![image](/assets/images/lesson_7/fire_detect.jpg)
 
-# Tham khảo
+# 4. Tham khảo
 1. https://www.analyticsvidhya.com/blog/2022/08/how-to-train-a-custom-object-detection-model-with-yolov7/
 2. https://machinelearningprojects.net/train-yolov7-on-the-custom-dataset/
