@@ -118,7 +118,7 @@ Thực tế user tồn tại trong role của một project ko có nghĩa là us
 
 3. Nếu tìm được user trong bước 2 thì lưu project vào mảng dữ liệu.
 
-# 9. Tài liệu tham khảo
-1. https://topdev.vn/blog/jira-la-gi/
-2. https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1/
+# 9. Tham khảo
+1. [https://topdev.vn/blog/jira-la-gi/](https://topdev.vn/blog/jira-la-gi/)
+2. [https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1/](https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1/)
 

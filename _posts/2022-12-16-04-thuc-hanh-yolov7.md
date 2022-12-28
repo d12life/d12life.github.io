@@ -137,5 +137,5 @@ display(Image(filename="/content/drive/MyDrive/yolov7/runs/detect/exp2/Chay-Pho-
 ![image](/assets/images/lesson_7/fire_detect.jpg)
 
 # 4. Tham khảo
-1. https://www.analyticsvidhya.com/blog/2022/08/how-to-train-a-custom-object-detection-model-with-yolov7/
-2. https://machinelearningprojects.net/train-yolov7-on-the-custom-dataset/
+1. [https://www.analyticsvidhya.com/blog/2022/08/how-to-train-a-custom-object-detection-model-with-yolov7/](https://www.analyticsvidhya.com/blog/2022/08/how-to-train-a-custom-object-detection-model-with-yolov7/)
+2. [https://machinelearningprojects.net/train-yolov7-on-the-custom-dataset/](https://machinelearningprojects.net/train-yolov7-on-the-custom-dataset/)

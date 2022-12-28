@@ -101,10 +101,7 @@ Bằng cách trên, các thông tin về gói cài đặt của dự án bao g�
 
 ## 4. Tham khảo
 
-[Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/)
-
-[Python Virtual Environments in Five Minutes](https://chriswarrick.com/blog/2018/09/04/python-virtual-environments/)
-
-[Pipenv & Virtual Environments](https://docs.python-guide.org/dev/virtualenvs/)
-
-https://zootopi.dev/tutorial/python/anaconda/
+1. [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/)
+2. [Python Virtual Environments in Five Minutes](https://chriswarrick.com/blog/2018/09/04/python-virtual-environments/)
+3. [Pipenv & Virtual Environments](https://docs.python-guide.org/dev/virtualenvs/)
+4. https://zootopi.dev/tutorial/python/anaconda/

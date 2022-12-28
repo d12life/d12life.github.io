@@ -123,5 +123,5 @@ Trong trường hợp có issue trong khi load các lớp (classes), chúng ta c
 rm ~/.labelImgSettings.pkl
 
 # 5. Tham khảo
-1. https://blog.vinbigdata.org/garbage-in-garbage-out-tu-goc-do-gan-nhan-du-lieu/
-2. https://pypi.org/project/labelImg/
+1. [https://blog.vinbigdata.org/garbage-in-garbage-out-tu-goc-do-gan-nhan-du-lieu/](https://blog.vinbigdata.org/garbage-in-garbage-out-tu-goc-do-gan-nhan-du-lieu/)
+2. [https://pypi.org/project/labelImg/](https://pypi.org/project/labelImg/)
