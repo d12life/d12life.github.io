@@ -1,7 +1,7 @@
 ---
 layout: post
 author: d12life
-title: Bài 9 - Hướng dẫn sử dụng công cụ wget
+title: Bài 8 - Hướng dẫn sử dụng công cụ wget
 ---
 
 Wget là một công cụ máy tính được tạo bởi GNU Project. Bạn có thể sử dụng nó để lấy nội dung và tệp từ các máy chủ web khác nhau. Tên của nó là sự kết hợp của World Wide Web và từ `get`. Nó có hỗ trợ các giao thức như FTP, SFTP, HTTP và HTTPS.

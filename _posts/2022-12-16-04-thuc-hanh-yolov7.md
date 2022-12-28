@@ -4,8 +4,7 @@ author: d12life
 title: Bài 7 - Thực hành yolov7
 ---
 
-Yolov7 là state-of-art model object detection release vào tháng 7/2022 bởi WongKinYiu and AlexeyAB. Nó được train để detect real-time 80 class của bộ dữ liệu COCO.
-![image](/assets/images/lesson_7/637f2a024b36bcd05e4f9baa_performance.png)
+You only look once (YOLO) là một mô hình CNN để detect object mà một ưu điểm nổi trội là nhanh hơn nhiều so với những mô hình cũ. Thậm chí có thể chạy tốt trên những IOT device như raspberry pi. Trong phần này, mình sẽ giới thiệu về YOLO v7 là state-of-art cho đến thời điểm hiện tại. Bài viết nhằm mục đích hướng dẫn chi tiết từng bước để thực hành và không mang tính học thuật.
 
 # 1. Chuẩn bị
 Kết nối Google Colab với Google Drive
