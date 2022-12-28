@@ -7,7 +7,7 @@ title: Bài 3 - Hướng dẫn tạo môi trường ảo trong Python
 Trong Python, môi trường ảo được sử dụng để cô lập môi trường của các dự án với nhau (ví dụ như trong trường hợp các dự án khác nhau yêu cầu các phiên bản khác nhau của cùng một thư viện). Môi trường ảo cho phép bạn cài đặt và quản lý các gói cài đặt một cách riêng rẽ và không xung đột với trình quản lý gói cài đặt của toàn hệ thống.
 
 # 1. Cài đặt Virtual Environment thủ công
-## 1.1. Cài đặt
+## 1.1. Cài đặt Virtual Enviroment
 Có hai công cụ chính được sử dụng để tạo môi trường ảo:
 - virtualenv là công cụ tiêu chuẩn trong nhiều năm, có thể được sử dụng với cả Python 2 và 3.
 - venv (pyvenv) được thêm vào thư viện chuẩn trong Python 3.3.
