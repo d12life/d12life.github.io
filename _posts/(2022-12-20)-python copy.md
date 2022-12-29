@@ -1,7 +1,7 @@
 ---
 layout: post
 author: d12life
-title: Bài 8 - Thực hành python
+title: Bài 9 - Một số kiểu dữ liệu trong Python
 ---
 # 1. Cách sử dụng một số hàm trong python
 ## 1.1 Hàm zip()
