@@ -54,7 +54,7 @@ qtm_list = ['q','u','a','n','t','r','i','m','a','n','g','.','c','o','m']
 print(qtm_list[:]) # Output: Bản sao của qtm_list
 ```
 
-# 1.2 Các thao tác trên List
+## 1.2 Các thao tác trên List
 Không giống như chuỗi, các phần tử bị gán cố định, list là kiểu dữ liệu có thể thay đổi.
 ```
 >>> cubes = [1, 8, 27, 65, 125]
@@ -381,12 +381,10 @@ print("QTM_Set=",my_set) #Output: QTM_Set= {'Xin chào', 1.0, (1, 2, 3)}
 
 Tạo set rỗng có chút khó khăn. Cặp dấu {} sẽ tạo một dictionary trong Python. Để tạo set không có phần tử nào, ta sử dụng hàm set() mà không có đối số nào.
 ```
-# initialize a with {}
-qtm = {}
+qtm = {} # initialize a with {}
 print(type(qtm)) # Output: <class 'dict'>
 
-# Khởi tạo qtm với set()
-qtm = set()
+qtm = set() # Khởi tạo qtm với set()
 print(type(qtm)) # Output: <class 'set'>
 ```
 
