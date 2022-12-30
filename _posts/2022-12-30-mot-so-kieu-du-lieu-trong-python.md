@@ -257,14 +257,14 @@ t = (10, "quan tri mang", 2j)
 print("t[0:2] = ", t[0:2]) #t[0:2] = (10, 'quan tri mang')
 ```
 
-## 5.1 Tuple hơn list ở điểm nào?
+## 2.1 Tuple hơn list ở điểm nào?
 Vì tuple và list khá giống nhau, nên chúng thường được sử dụng trong những tình huống tương tự nhau. Tuy nhiên, tuple vẫn có những lợi thế nhất định so với list, như:
 - Tuple thường được sử dụng cho các kiểu dữ liệu không đồng nhất (khác nhau) và list thường sử dụng cho các kiểu dữ liệu (đồng nhất) giống nhau.
 - Vì tuple không thể thay đổi, việc lặp qua các phần tử của tuple nhanh hơn so với list. Vì vậy, trong trường hợp này tuple chiếm ưu thế về hiệu suất hơn list một chút.
 - Tuple chứa những phần tử không thay đổi, có thể được sử dụng như key cho dictionary. Với list, điều này không thể làm được.
 - Nếu có dữ liệu không thay đổi việc triển khai nó như một tuple sẽ đảm bảo rằng dữ liệu đó được bảo vệ chống ghi (write-protected).
 
-## 5.2 Tạo một tuple
+## 2.2 Tạo một tuple
 Tuple được tạo bằng cách đặt tất cả các phần tử của nó trong dấu ngoặc đơn (), phân tách bằng dấu phẩy. Bạn có thể bỏ dấu ngoặc đơn nếu muốn, nhưng nên thêm nó vào cho code rõ ràng hơn.
 
 Tuple không bị giới hạn số lượng phần tử và có thể có nhiều kiểu dữ liệu khác nhau như số nguyên, số thập phân, list, string,...
@@ -301,7 +301,7 @@ my_tuple = "Quantrimang.com",
 print(type(my_tuple)) # Output: <class 'tuple'>
 ```
 
-## 5.3 Truy cập vào các phần tử của tuple
+## 2.3 Truy cập vào các phần tử của tuple
 Có nhiều cách khác nhau để truy cập vào các phần tử của một tuple, khá giống với list, nên chúng ta có thể xem lại ở phần list.
 
 **Index:** Sử dụng toán tử index [] để truy cập vào phần tử trong tuple với index bắt đầu bằng 0. Nghĩa là nếu tuple có 6 phần tử thì index của nó sẽ bắt đầu từ 0 đến 5. Nếu cố gắn truy cập đến index 6, 7 thì sẽ tạo lỗi IndexError. Index bắt buộc phải là số nguyên, mà không thể là số thập phân hay bất kỳ kiểu dữ liệu nào khác, nếu không sẽ tạo lỗi TypeError. Những tuple lồng nhau được truy cập bằng cách sử dụng index lồng nhau:
@@ -316,7 +316,7 @@ print(n_tuple[1][2]) # Output: 8
 
 Ngoài ra để kiểm tra xem một phần tử đã tồn tại trong tuple hay chưa, duyệt qua các phần tử của tuple chúng ta cũng sử dung với từ khóa `in` và `for` như trong list.
 
-## 5.4 Thay đổi một tuple
+## 2.4 Thay đổi một tuple
 Không giống như list, tuple không thể thay đổi. Điều này có nghĩa là các phần tử của một tuple không thể thay đổi một khi đã được gán. Nhưng, nếu bản thân phần tử đó là một kiểu dữ liệu có thể thay đổi (như list chẳng hạn) thì các phần tử lồng nhau có thể được thay đổi. Chúng ta cũng có thể gán giá trị khác cho tuple (gọi là gán lại - reassignment).
 ```
 my_tuple = (1, 3, 5, [7, 9])
@@ -335,7 +335,7 @@ print((2, 4, 6) + (3, 5, 7)) # Output: (2, 4, 6, 3, 5, 7)
 print(("Quantrimang.com",) * 3) # Output: ('Quantrimang.com', 'Quantrimang.com', 'Quantrimang.com')
 ```
 
-## 5.5 Xóa tuple
+## 2.5 Xóa tuple
 Các phần tử trong tuple không thể thay đổi nên chúng ta cũng không thể xóa, loại bỏ phần tử khỏi tuple. Nhưng việc xóa hoàn toàn một tuple có thể thực hiện được với từ khóa del như dưới đây:
 ```
 QTM = ('q','u','a','n','t','r','i','m','a','n','g','.','c','o','m')
@@ -346,7 +346,7 @@ del QTM
 print (QTM) # NameError: name 'QTM' is not defined
 ```
 
-## 5.6 Phương thức và hàm dùng với tuple trong Python
+## 2.6 Phương thức và hàm dùng với tuple trong Python
 Phương thức thêm phần tử và xóa phần tử không thể sử dụng với tuple, chỉ có 2 phương thức sau là dùng được:
 - **count(x):** Đếm số phần tử x trong tuple.
 - **index(x):** Trả về giá trị index của phần tử x đầu tiên mà nó gặp trong tuple.
@@ -367,10 +367,10 @@ Các hàm dùng trong tuple khá giống với list, gồm có:
 - **sum():** Trả về tổng tất cả các phần tử trong tuple.
 - **tuple():** Chuyển đổi những đối tượng có thể lặp (list, string, set, dictionary) thành tuple.
 
-# 6. Set
+# 3. Set
 Set trong Python là tập hợp các phần tử duy nhất, không có thứ tự. Các phần tử trong set phân cách nhau bằng dấu phẩy và nằm trong dấu ngoặc nhọn {}. Nhớ kỹ rằng các phần tử trong set không có thứ tự. Nhưng các phần tử trong set có thể thay đổi, có thể thêm hoặc xóa phần tử của set. Set có thể được sử dụng để thực hiện các phép toán như tập hợp, giao,...
 
-## 6.1 Cách tạo set
+## 3.1 Cách tạo set
 Set được tạo bằng cách đặt tất cả các phần tử trong dấu ngoặc nhọn, phân tách bằng dấu phẩy hoặc sử dụng hàm set(). Set không giới hạn số lượng phần tử, nó có thể chứa nhiều kiểu biến khác nhau, nhưng không thể chứa phần tử có thể thay đổi được như list, set hay dictionary.
 ```
 a = {5,2,3,1,4}
@@ -389,7 +389,7 @@ qtm = set() # Khởi tạo qtm với set()
 print(type(qtm)) # Output: <class 'set'>
 ```
 
-## 6.2 Thay đổi set trong Python
+## 3.2 Thay đổi set trong Python
 Vì set là tập hợp các phần tử không có thứ tự nên chỉ mục không ý nghĩa gì với set. Toán tử cắt [] sẽ không làm việc trên set. Nếu cố tình dùng, bạn sẽ nhận được thông báo lỗi như dưới đây:
 ```
 >>> a[1]
@@ -412,7 +412,7 @@ my_set.update([4,5], {1,6,8})
 print(my_set) # Output: {1, 2, 3, 4, 5, 6, 8}
 ```
 
-## 6.3 Tìm kiếm, duyệt qua set
+## 3.3 Tìm kiếm, duyệt qua set
 Kiểm tra một đối tượng xem nó có nằm trong set không, sử dụng từ khóa `in`.
 ```
 my_set = set("Quantrimang.com")
@@ -426,7 +426,7 @@ for letter in set("Python"):
 print(letter) # Output: Các ký tự của chuỗi Python
 ```
 
-## 6.4 Xóa phần tử khỏi set
+## 3.4 Xóa phần tử khỏi set
 Chúng ta dùng discard() và remove() để xóa phần tử cụ thể khỏi set. Khi phần tử cần xóa không tồn tại trong set thì discard() không làm gì cả, còn remove() sẽ báo lỗi.
 ```
 my_set = {1, 3, 4, 5, 6}
@@ -457,7 +457,7 @@ my_set.clear()
 print(my_set) #Output: set()
 ```
 
-## 6.5 Các toán tử set trong Python
+## 3.5 Các toán tử set trong Python
 Set thường được sử dụng để chứa các toán tử tập hợp như hợp, giao, hiệu, bù. Có cả phương thức và toán tử để thực hiện những phép toán tập hợp này.
 
 **Hợp của A và B** là tập hợp tất cả các phần tử của A và B. Hợp được biểu diễn bằng cách sử dụng toán tử | hoặc sử dụng phương thức union().
@@ -503,7 +503,7 @@ print(A ^ B) # Output: {1, 2, 3, 6, 7, 8}
 print(A.symmetric_difference(B)) # Output: {1, 2, 3, 6, 7, 8}
 ```
 
-## 6.6 Các phương thức dùng trên set
+## 3.6 Các phương thức dùng trên set
 - **add():** Thêm một phần tử vào set.
 - **clear():** Xóa tất cả phần tử của set.
 - **copy():** Trả về bản sao chép của set.
@@ -522,20 +522,20 @@ print(A.symmetric_difference(B)) # Output: {1, 2, 3, 6, 7, 8}
 - **union():** Trả về set mới là hợp của 2 set.
 - **update():**	Cập nhật set với hợp của chính nó và set khác.
 
-## 6.7 Hàm thường dùng trên set
+## 3.7 Hàm thường dùng trên set
 Các hàm thường dùng trên set bao gồm `all()`, `any()`, `enumerate()`, `len()`, `max()`, `min()`, `sorted()`, `sum()`. Chức năng của những hàm này khá giống với khi bạn sử dụng trên list, tuple, chúng ta có thể tham khảo thêm từ các phần này.
 
-## 6.8 Frozenset trong Python
+## 3.8 Frozenset trong Python
 Frozenset là một lớp mới, có đặc điểm của một set, nhưng phần tử của nó không thể thay đổi được sau khi gán. Để dễ hình dung thì tuple là list bất biến còn frozenset là set bất biến.
 
 Các set có thể thay đổi được nhưng không thể băm (hash) được, do đó không thể sử dụng set để làm key cho dictionary. Nhưng frozenset có thể băm được nên có thể dùng như các key cho dictionary.
 
 Frozenset có thể tạo bằng hàm frozenset(). Kiểu dữ liệu này hỗ trợ các phương thức như copy(), difference(), intersection(), isdisjoint(), issubset(), issuperset(), symmetric_difference() và union(). Vì không thể thay đổi nên phương thức add() hay remove() không sử dụng được trên frozenset.
 
-# 7. Dictionary
+# 4. Dictionary
 Dictionary là tập hợp các cặp khóa giá trị không có thứ tự. Nó thường được sử dụng khi chúng ta có một số lượng lớn dữ liệu. Các dictionary được tối ưu hóa để trích xuất dữ liệu với điều kiện bạn phải biết được khóa để lấy giá trị.
 
-## 7.1 Cách tạo dictionary trong Python
+## 4.1 Cách tạo dictionary trong Python
 Trong Python, dictionary được định nghĩa trong dấu ngoặc nhọn {} với mỗi phần tử là một cặp theo dạng key:value. Key và value này có thể là bất kỳ kiểu dữ liệu nào. Bạn cũng có thể tạo dictionary bằng cách sử dụng hàm dict() được tích hợp sẵn.
 ```
 dict1 = {} #dictionary rỗng
@@ -549,7 +549,7 @@ dict5 = dict([(1,'QTM'), (2,'CN')])
 <class 'dict'>
 ```
 
-## 7.2 Truy cập phần tử của dictionary
+## 4.2 Truy cập phần tử của dictionary
 Các kiểu dữ liệu lưu trữ khác sử dụng index để truy cập vào các giá trị thì dictionary sử dụng các key. Key có thể được sử dụng trong cặp dấu ngoặc vuông hoặc sử dụng get().
 
 Ví dụ
@@ -567,7 +567,7 @@ dict2[1] = Quantrimang.com
 dict2[quantrimang] = Công nghệ
 ```
 
-## 7.3 Thay đổi, thêm phần tử cho dictionary
+## 4.3 Thay đổi, thêm phần tử cho dictionary
 Dictionary có thể thay đổi, nên có thể thêm phần tử mới hoặc thay đổi giá trị của các phần tử hiện có bằng cách sử dụng toán tử gán. Nếu key đã có, giá trị sẽ được cập nhật, nếu là một cặp key: value mới thì sẽ được thêm thành phần tử mới.
 ```
 dict2 = {1: 'Quantrimang.com','quantrimang': 'Công nghệ'}
@@ -579,7 +579,7 @@ dict2[2] = 'Python'
 print(dict2) #output: {1: 'Quantrimang.com', 'quantrimang': 'Quản trị mạng', 2: 'Python'}
 ```
 
-## 7.4 Kiểm tra và duyệt qua phần tử trong dictionary
+## 4.4 Kiểm tra và duyệt qua phần tử trong dictionary
 Kiểm tra key của phần tử đã có trong dictionary hay chưa bằng cách dùng in, và không thể làm điều đó với value.
 ```
 lap_phuong = {0: 0, 1: 1, 2: 8, 3: 27, 4: 64, 5: 125}
@@ -594,7 +594,7 @@ for i in lap_phuong
     print(lap_phuong[i]) # Output: Các giá trị trong dictionary
 ```
 
-## 7.5 Xóa phần tử từ dictionary
+## 4.5 Xóa phần tử từ dictionary
 Bạn có thể xóa phần tử cụ thể của dictionary bằng cách sử dụng pop(), nó sẽ xóa phần tử có key đã cho và trả về giá trị của phần tử. popitem() có thể xóa và trả về một phần tử tùy ý dưới dạng (key, value). Tất cả các phần tử trong dictionary có thể bị xóa cùng lúc bằng cách dùng clear(). Ngoài ra, từ khóa del cũng có thể dùng để xóa một phần tử hoặc toàn bộ dictionary.
 ```
 binh_phuong = {1:1, 2:4, 3:9, 4:16, 5:25}
@@ -615,7 +615,7 @@ del binh_phuong
 print(squares) # Thông báo lỗi
 ```
 
-## 7.6 Dictionary comprehension trong Python
+## 4.6 Dictionary comprehension trong Python
 Dictionary comprehension là cách đơn giản, rút gọn để tạo dictionary mới từ một vòng lặp trong Python. Câu lệnh sẽ bao gồm một cặp biểu thức (key:value) cùng câu lệnh for, tất cả đặt trong dấu {}. Dưới đây là ví dụ tạo dictionary với mỗi pahàn tử là một cặp số và lập phương của nó.
 ```
 lap_phuong = {x: x*x*x for x in range(6)}
@@ -636,5 +636,5 @@ lap_phuong_chan = {x: x*x*x for x in range (10) if x%2==0}
 print(lap_phuong_chan) # output: {0: 0, 2: 8, 4: 64, 6: 216, 8: 512}
 ```
 
-#  Tham khảo
+# 5. Tham khảo
 1. [https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881](https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881)
