@@ -391,8 +391,289 @@ Các hàm dùng trong tuple khá giống với list, gồm có:
 - **tuple():** Chuyển đổi những đối tượng có thể lặp (list, string, set, dictionary) thành tuple.
 
 # 6. Set
+Set trong Python là tập hợp các phần tử duy nhất, không có thứ tự. Các phần tử trong set phân cách nhau bằng dấu phẩy và nằm trong dấu ngoặc nhọn {}. Nhớ kỹ rằng các phần tử trong set không có thứ tự. Nhưng các phần tử trong set có thể thay đổi, có thể thêm hoặc xóa phần tử của set. Set có thể được sử dụng để thực hiện các phép toán như tập hợp, giao,...
 
+## 6.1 Cách tạo set
+Set được tạo bằng cách đặt tất cả các phần tử trong dấu ngoặc nhọn, phân tách bằng dấu phẩy hoặc sử dụng hàm set(). Set không giới hạn số lượng phần tử, nó có thể chứa nhiều kiểu biến khác nhau, nhưng không thể chứa phần tử có thể thay đổi được như list, set hay dictionary.
+```
+a = {5,2,3,1,4}
+print("a=", a) # Output: a = {1, 2, 3, 4, 5}
 
+my_set = {1.0, "Xin chào", (1, 2, 3)}
+print("QTM_Set=",my_set) #Output: QTM_Set= {'Xin chào', 1.0, (1, 2, 3)}
+```
+
+Tạo set rỗng có chút khó khăn. Cặp dấu {} sẽ tạo một dictionary trong Python. Để tạo set không có phần tử nào, ta sử dụng hàm set() mà không có đối số nào.
+```
+# initialize a with {}
+qtm = {}
+print(type(qtm)) # Output: <class 'dict'>
+
+# Khởi tạo qtm với set()
+qtm = set()
+print(type(qtm)) # Output: <class 'set'>
+```
+
+## 6.2 Thay đổi set trong Python
+Vì set là tập hợp các phần tử không có thứ tự nên chỉ mục không ý nghĩa gì với set. Toán tử cắt [] sẽ không làm việc trên set. Nếu cố tình dùng, bạn sẽ nhận được thông báo lỗi như dưới đây:
+```
+>>> a[1]
+Traceback (most recent call last):
+File "<pyshell#2>", line 1, in <module>
+a[1]
+TypeError: 'set' object does not support indexing
+```
+
+Để thêm một phần tử vào set, bạn sử dụng add() và để thêm nhiều phần tử dùng update(). Update() có thể nhận tuple, list, strring và set làm đối số. Trong mọi trường hợp, Set có giá trị duy nhất, các bản sao sẽ tự động bị loại bỏ.
+```
+# Khởi tạo my_set
+my_set = {1,3}
+my_set.add(2)
+print(my_set) # Output: {1, 2, 3}
+
+my_set.update([2,3,4])
+print(my_set) # Output: {1, 2, 3, 4}
+
+my_set.update([4,5], {1,6,8})
+print(my_set) # Output: {1, 2, 3, 4, 5, 6, 8}
+```
+
+## 6.3 Tìm kiếm, duyệt qua set
+Kiểm tra một đối tượng xem nó có nằm trong set không, sử dụng từ khóa `in`.
+```
+my_set = set("Quantrimang.com")
+print('Q' in my_set) # Output: True
+print('q' in my_set) # Output: False
+```
+
+Sử dụng vòng lặp for để duyệt qua các phần tử của set.
+```
+for letter in set("Python"):
+print(letter) # Output: Các ký tự của chuỗi Python
+```
+
+## 6.4 Xóa phần tử khỏi set
+Chúng ta dùng discard() và remove() để xóa phần tử cụ thể khỏi set. Khi phần tử cần xóa không tồn tại trong set thì discard() không làm gì cả, còn remove() sẽ báo lỗi.
+```
+my_set = {1, 3, 4, 5, 6}
+
+my_set.discard(4)
+print(my_set) # Output: {1, 3, 5, 6}
+
+my_set.remove(6)
+print(my_set) # Output: {1, 3, 5}
+
+my_set.discard(2)
+print(my_set) # Output: {1, 3, 5}
+
+my_set.remove(2) # Output: KeyError: 2
+```
+
+Bạn có thể xóa và trả lại một phần tử bằng phương thức pop(). Set không có thứ tự, không có cách nào để xác định phần tử nào sẽ bị xóa, điều này diễn ra hoàn toàn ngẫu hứng. Việc xóa hoàn toàn set được thực hiện bằng cách dùng clear().
+```
+my_set = set("Quantrimang.com")
+print(my_set) # Output: set of unique elements
+
+print(my_set.pop()) # Output: phần tử bị xóa ngẫu nhiên
+
+my_set.pop()
+print(my_set) # Output: phần tử bị xóa ngẫu nhiên
+
+my_set.clear()
+print(my_set) #Output: set()
+```
+
+## 6.5 Các toán tử set trong Python
+Set thường được sử dụng để chứa các toán tử tập hợp như hợp, giao, hiệu, bù. Có cả phương thức và toán tử để thực hiện những phép toán tập hợp này.
+
+**Hợp của A và B** là tập hợp tất cả các phần tử của A và B. Hợp được biểu diễn bằng cách sử dụng toán tử | hoặc sử dụng phương thức union().
+```
+A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+print(A | B) # Output: {1, 2, 3, 4, 5, 6, 7, 8}
+
+print(A.union(B)) # Output: {1, 2, 3, 4, 5, 6, 7, 8}
+print(B.union(A)) # Output: {1, 2, 3, 4, 5, 6, 7, 8}
+```
+
+**Giao của A và B** là tập hợp những phần tử chung của A và B. Để tìm giao của A và B ta có thể dùng toán tử & hoặc hàm intersection().
+```
+A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+print(A & B) # Output: {4, 5}
+
+print(A.intersection(B)) # Output: {4, 5}
+print(B.intersection(A)) # Output: {4, 5}
+```
+
+**Hiệu của A và B (A-B)** là tập hợp phần tử chỉ có trong A, không có trong B. **Hiệu của B và A (B-A)** là tập hợp phần tử chỉ có trong B không có trong A. Có thể sử dụng toán tử - hoặc hàm difference() để thực hiện phép toán tập hợp này.
+```
+A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+print(A - B) # Output: {1, 2, 3}
+print(A.difference(B)) # Output: {1, 2, 3}
+
+print(B - A) # Output: {8, 6, 7}
+print(B.difference(A)) # Output: {8, 6, 7}
+```
+
+**Bù của A và B** là tập hợp những phần tử có trong A và B nhưng không phải phần tử chung của hai tập hợp này. Bạn có thể dùng toán tử ^ hoặc hàm symmetric_difference() để thực hiện phép bù.
+```
+A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+print(A ^ B) # Output: {1, 2, 3, 6, 7, 8}
+print(A.symmetric_difference(B)) # Output: {1, 2, 3, 6, 7, 8}
+```
+
+## 6.6 Các phương thức dùng trên set
+- **add():** Thêm một phần tử vào set.
+- **clear():** Xóa tất cả phần tử của set.
+- **copy():** Trả về bản sao chép của set.
+- **difference():**	Trả về set mới chứa những phần tử khác nhau của 2 hay nhiều set.
+- **difference_update():** Xóa tất cả các phần tử của set khác từ set này.
+- **discard():** Xóa phần tử nếu nó có mặt trong set.
+- **intersection():** Trả về set mới chứa phần tử chung của 2 set.
+- **intersection_update():** Cập nhật set với phần tử chung của chính nó và set khác.
+- **isdisjoint():**	Trả về True nếu 2 set không có phần tử chung.
+- **issubset():** Trả về True nếu set là tập con của set khác.
+- **issuperset():**	Trả về True nếu set này chứa set khác.
+- **pop():** Xóa và trả về phần tử ngẫu nhiên, báo lỗi KeyError nếu set rỗng.
+- **remove():**	Xóa phần tử từ set. Nếu phần tử đó không có trong set sẽ báo lỗi KeyError.
+- **symmetric_difference():** Trả về set mới chứa những phần tử không phải là phần tử chung của 2 set.
+- **symmetric_difference_update():**	Cập nhật set với những phần tử khác nhau của chính nó và set khác.
+- **union():** Trả về set mới là hợp của 2 set.
+- **update():**	Cập nhật set với hợp của chính nó và set khác.
+
+## 6.7 Hàm thường dùng trên set
+Các hàm thường dùng trên set bao gồm `all()`, `any()`, `enumerate()`, `len()`, `max()`, `min()`, `sorted()`, `sum()`. Chức năng của những hàm này khá giống với khi bạn sử dụng trên list, tuple, chúng ta có thể tham khảo thêm từ các phần này.
+
+## 6.8 Frozenset trong Python
+Frozenset là một lớp mới, có đặc điểm của một set, nhưng phần tử của nó không thể thay đổi được sau khi gán. Để dễ hình dung thì tuple là list bất biến còn frozenset là set bất biến.
+
+Các set có thể thay đổi được nhưng không thể băm (hash) được, do đó không thể sử dụng set để làm key cho dictionary. Nhưng frozenset có thể băm được nên có thể dùng như các key cho dictionary.
+
+Frozenset có thể tạo bằng hàm frozenset(). Kiểu dữ liệu này hỗ trợ các phương thức như copy(), difference(), intersection(), isdisjoint(), issubset(), issuperset(), symmetric_difference() và union(). Vì không thể thay đổi nên phương thức add() hay remove() không sử dụng được trên frozenset.
+
+# 7. Dictionary
+Dictionary là tập hợp các cặp khóa giá trị không có thứ tự. Nó thường được sử dụng khi chúng ta có một số lượng lớn dữ liệu. Các dictionary được tối ưu hóa để trích xuất dữ liệu với điều kiện bạn phải biết được khóa để lấy giá trị.
+
+## 7.1 Cách tạo dictionary trong Python
+Trong Python, dictionary được định nghĩa trong dấu ngoặc nhọn {} với mỗi phần tử là một cặp theo dạng key:value. Key và value này có thể là bất kỳ kiểu dữ liệu nào. Bạn cũng có thể tạo dictionary bằng cách sử dụng hàm dict() được tích hợp sẵn.
+```
+dict1 = {} #dictionary rỗng
+
+#dict2 là dictionary với các khóa nguyên
+dict2 = {1: 'Quantrimang.com',2: 'Công nghệ'}
+
+#Tạo dictionary với khóa hỗn hợp
+dict3 = {'tên': 'QTM', 1: [1, 3, 5]}
+
+#Tạo dictionary bằng dict()
+dict4 = dict({1:'apple', 2:'ball'})
+
+#Tạo dictionary từ chuỗi với mỗi mục là một cặp
+dict5 = dict([(1,'QTM'), (2,'CN')])
+```
+```
+>>> type(dict2)
+<class 'dict'>
+```
+
+## 7.2 Truy cập phần tử của dictionary
+Các kiểu dữ liệu lưu trữ khác sử dụng index để truy cập vào các giá trị thì dictionary sử dụng các key. Key có thể được sử dụng trong cặp dấu ngoặc vuông hoặc sử dụng get().
+
+Ví dụ
+```
+#khai báo và gán giá trị dict2
+dict2 = {1: 'Quantrimang.com','quantrimang': 'Công nghệ'} 
+print(type(dict2)) #in kiểu dữ liệu của dict2
+
+#trích xuất dữ liệu bằng khóa rồi in
+print("dict2[1] = ", dict2[1]) 
+print("dict2[quantrimang] = ",dict2['quantrimang'])
+```
+Kết quả
+```
+<class 'dict'>
+dict2[1] = Quantrimang.com
+dict2[quantrimang] = Công nghệ
+```
+
+## 7.3 Thay đổi, thêm phần tử cho dictionary
+Dictionary có thể thay đổi, nên có thể thêm phần tử mới hoặc thay đổi giá trị của các phần tử hiện có bằng cách sử dụng toán tử gán. Nếu key đã có, giá trị sẽ được cập nhật, nếu là một cặp key: value mới thì sẽ được thêm thành phần tử mới.
+```
+dict2 = {1: 'Quantrimang.com','quantrimang': 'Công nghệ'}
+
+#cập nhật giá trị
+dict2['quantrimang'] = 'Quản trị mạng'
+print(dict2) #output: {1: 'Quantrimang.com', 'quantrimang': 'Quản trị mạng'}
+
+#thêm phần tử mới
+dict2[2] = 'Python'
+print(dict2) #output: {1: 'Quantrimang.com', 'quantrimang': 'Quản trị mạng', 2: 'Python'}
+```
+
+## 7.4 Kiểm tra và duyệt qua phần tử trong dictionary
+Kiểm tra key của phần tử đã có trong dictionary hay chưa bằng cách dùng in, và không thể làm điều đó với value.
+```
+lap_phuong = {0: 0, 1: 1, 2: 8, 3: 27, 4: 64, 5: 125}
+print (2 in lap_phuong) #output: True
+print (9 in lap_phuong) #output: False
+print (5 not in lap_phuong) #output: False
+```
+Dùng vòng lặp for để duyệt qua key của các phần tử trong dictionary.
+```
+lap_phuong = {0: 0, 1: 1, 2: 8, 3: 27, 4: 64, 5: 125}
+for i in lap_phuong
+    print(lap_phuong[i]) # Output: Các giá trị trong dictionary
+```
+
+## 7.5 Xóa phần tử từ dictionary
+Bạn có thể xóa phần tử cụ thể của dictionary bằng cách sử dụng pop(), nó sẽ xóa phần tử có key đã cho và trả về giá trị của phần tử. popitem() có thể xóa và trả về một phần tử tùy ý dưới dạng (key, value). Tất cả các phần tử trong dictionary có thể bị xóa cùng lúc bằng cách dùng clear(). Ngoài ra, từ khóa del cũng có thể dùng để xóa một phần tử hoặc toàn bộ dictionary.
+```
+# tạo dictionary
+binh_phuong = {1:1, 2:4, 3:9, 4:16, 5:25}
+
+print(binh_phuong.pop(4)) # Output: 16
+print(binh_phuong) # Output: {1: 1, 2: 4, 3: 9, 5: 25}
+
+del binh_phuong[2]
+print(binh_phuong) # output: {1: 1, 3: 9, 5: 25}
+
+print(binh_phuong.popitem()) # Output: (5, 25), xóa bất kỳ ở đây là (5, 25)
+print(binh_phuong) # Output: {1: 1, 3: 9}
+
+binh_phuong.clear()
+print(binh_phuong) # output: {}
+
+del binh_phuong
+print(squares) # Thông báo lỗi
+```
+
+## 7.6 Dictionary comprehension trong Python
+Dictionary comprehension là cách đơn giản, rút gọn để tạo dictionary mới từ một vòng lặp trong Python. Câu lệnh sẽ bao gồm một cặp biểu thức (key:value) cùng câu lệnh for, tất cả đặt trong dấu {}. Dưới đây là ví dụ tạo dictionary với mỗi pahàn tử là một cặp số và lập phương của nó.
+```
+lap_phuong = {x: x*x*x for x in range(6)}
+print(lap_phuong) # Output: {0: 0, 1: 1, 2: 8, 3: 27, 4: 64, 5: 125}
+```
+
+Câu lệnh trên tương đương với đoạn code
+```
+lap_phuong = {}
+for x in range(6):
+    lap_phuong[x] = x*x*x
+print(lap_phuong)
+```
+
+Chúng ta cũng có thể sử dụng lệnh if trong dictionary comprehension. Lệnh if có thể lọc những phần tử trong dictionary hiện có để tạo thành dictionary mới như ví dụ dưới đây:
+```
+lap_phuong_chan = {x: x*x*x for x in range (10) if x%2==0}
+print(lap_phuong_chan) # output: {0: 0, 2: 8, 4: 64, 6: 216, 8: 512}
+```
 
 #  Tham khảo
 1. [https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881](https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881)
