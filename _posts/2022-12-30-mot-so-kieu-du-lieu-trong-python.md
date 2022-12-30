@@ -175,6 +175,7 @@ Những phương thức có sẵn cho list trong Python gồm:
 - **sort():** Sắp xếp các phần tử trong list theo thứ tự tăng dần.
 - **reverse():** Đảo ngược thứ tự các phần tử trong list.
 - **copy():** Trả về bản sao của list.
+
 ```
 QTM = [9,8,7,6,8,5,8]
 print(QTM.index(7)) # Output: 2
