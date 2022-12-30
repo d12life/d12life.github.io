@@ -350,6 +350,7 @@ print (QTM) # NameError: name 'QTM' is not defined
 Phương thức thêm phần tử và xóa phần tử không thể sử dụng với tuple, chỉ có 2 phương thức sau là dùng được:
 - **count(x):** Đếm số phần tử x trong tuple.
 - **index(x):** Trả về giá trị index của phần tử x đầu tiên mà nó gặp trong tuple.
+
 ```
 QTM = ['q','u','a','n','t','r','i','m','a','n','g','.','c','o','m']
 
