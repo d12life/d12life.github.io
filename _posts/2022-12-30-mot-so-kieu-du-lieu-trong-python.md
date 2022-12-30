@@ -19,16 +19,13 @@ list4 = ["mouse", [8, 4, 6], ['a']] # list lồng nhau
 ```
 qtm_list = ['q','u','a','n','t','r','i','m','a','n','g','.','c','o','m']
 
-# TypeError: list indices must be integers or slices, not float
-qtm_list[2.0]
+qtm_list[2.0] # TypeError: list indices must be integers or slices, not float
 ```
 
 List lồng nhau sẽ được truy cập bằng index lồng nhau:
 ```
-# List lồng nhau
 ln_list = ["Happy", [1,3,5,9]]
 
-# Index lồng nhau
 print(ln_list[0][1]) # Output: a
 print(ln_list[1][3]) # Output: 9
 ```
@@ -113,7 +110,7 @@ Duyệt qua các phần tử của list sử dụng `for`:
 for ngon_ngu in ['Python','Java','C']:
     print("Tôi thích lập trình",ngon_ngu)
 
-# Output:
+Output:
 Tôi thích lập trình Python
 Tôi thích lập trình Java
 Tôi thích lập trình C
@@ -133,12 +130,10 @@ my_list = ['q','u','a','n','t','r','i','m','a','n','g','.','c','o','m']
 del my_list[2] # xóa phần tử có index=2
 print(my_list) # Output: ['q', 'u', 'n', 't', 'r', 'i', 'm', 'a', 'n', 'g', '.', 'c', 'o', 'm']
 
-# xóa phần tử có index từ 1 đến 7 (ko bao gồm index=7)
-del my_list[1:7]
+del my_list[1:7] # xóa phần tử có index từ 1 đến 7 (ko bao gồm index=7)
 print(my_list) # Output: ['q', 'a', 'n', 'g', '.', 'c', 'o', 'm']
 
-# xóa toàn bộ list my_list
-del my_list
+del my_list # xóa toàn bộ list my_list
 print(my_list) # Error: NameError: name 'my_list' is not defined
 ```
 
@@ -273,28 +268,21 @@ Tuple được tạo bằng cách đặt tất cả các phần tử của nó t
 
 Tuple không bị giới hạn số lượng phần tử và có thể có nhiều kiểu dữ liệu khác nhau như số nguyên, số thập phân, list, string,...
 ```
-# Tuple rỗng
 my_tuple = ()
 print(my_tuple) # Output: ()
 
-# tuple số nguyên
 my_tuple = (2, 4, 16, 256)
 print(my_tuple) # Output: (2, 4, 16, 256)
 
-# tuple có nhiều kiểu dữ liệu
 my_tuple = (10, "Quantrimang.com", 3.5)
 print(my_tuple) # Output: (10, "Quantrimang.com", 3.5)
 
-# tuple lồng nhau
 my_tuple = ("QTM", [2, 4, 6], (3, 5, 7))
 print(my_tuple) # Output: ("QTM", [2, 4, 6], (3, 5, 7))
 
-# tuple có thể được tạo mà không cần dấu ()
-# còn gọi là đóng gói tuple
 my_tuple = 10, "Quantrimang.com", 3.5
 print(my_tuple) # Output: (10, "Quantrimang.com", 3.5)
 
-# mở gói (unpacking) tuple cũng có thể làm được
 a, b, c = my_tuple
 print(a) # Output: 10
 print(b) # Output: Quantrimang.com
@@ -302,15 +290,12 @@ print(c)  # Output: 3.5
 ```
 Tạo tuple chỉ có một phần tử hơi phức tạp chút, nếu bạn tạo theo cách thông thường là cho phần tử đó vào trong cặp dấu () là chưa đủ, cần phải thêm dấu phẩy để chỉ ra rằng, đây là tuple.
 ```
-# tạo tuple chỉ với ()
 my_tuple = ("Quantrimang.com")
 print(type(my_tuple)) # Output: <class 'str'>
 
-# khi thêm dấu phẩy vào cuối
 my_tuple = ("Quantrimang.com",) 
 print(type(my_tuple)) # Output: <class 'tuple'>
 
-# dấu () là tùy chọn, bạn có thể bỏ nếu thích
 my_tuple = "Quantrimang.com",
 print(type(my_tuple)) # Output: <class 'tuple'>
 ```
@@ -320,13 +305,8 @@ Có nhiều cách khác nhau để truy cập vào các phần tử của một 
 
 **Index:** Sử dụng toán tử index [] để truy cập vào phần tử trong tuple với index bắt đầu bằng 0. Nghĩa là nếu tuple có 6 phần tử thì index của nó sẽ bắt đầu từ 0 đến 5. Nếu cố gắn truy cập đến index 6, 7 thì sẽ tạo lỗi IndexError. Index bắt buộc phải là số nguyên, mà không thể là số thập phân hay bất kỳ kiểu dữ liệu nào khác, nếu không sẽ tạo lỗi TypeError. Những tuple lồng nhau được truy cập bằng cách sử dụng index lồng nhau:
 ```
-# tuple lồng nhau
 n_tuple = ("Quantrimang.com", [2, 6, 8], (1, 2, 3))
-
-# index lồng nhau
 print(n_tuple[0][5]) # Output: 'r'
-
-# index lồng nhau
 print(n_tuple[1][2]) # Output: 8
 ```
 **Index âm:** Python cho phép lập chỉ mục âm cho các đối tượng dạng chuỗi. Index -1 tham chiếu đến phần tử cuối cùng, -2 là thứ 2 tính từ cuối tính lên.
@@ -344,17 +324,13 @@ my_tuple[1] = 9 # TypeError: 'tuple' object does not support item assignment
 my_tuple[3][0] = 8
 print(my_tuple) # Output: (1, 3, 5, [8, 9])
 
-# Nếu cần thay đổi tuple hãy gán lại giá trị cho nó
 my_tuple = ('q', 'u', 'a', 'n', 't', 'r', 'i', 'm', 'a', 'n', 'g')
 print(my_tuple) # Output: ('q', 'u', 'a', 'n', 't', 'r', 'i', 'm', 'a', 'n', 'g')
 ```
 
 Chúng ta có thể dùng toán tử + để nối 2 tuple, toán tử * để lặp lại tuple theo số lần đã cho. Cả + và * đều cho kết quả là một tuple mới.
 ```
-# Nối 2 tuple
 print((2, 4, 6) + (3, 5, 7)) # Output: (2, 4, 6, 3, 5, 7)
-
-# Lặp lại tuple
 print(("Quantrimang.com",) * 3) # Output: ('Quantrimang.com', 'Quantrimang.com', 'Quantrimang.com')
 ```
 
@@ -426,7 +402,6 @@ TypeError: 'set' object does not support indexing
 
 Để thêm một phần tử vào set, bạn sử dụng add() và để thêm nhiều phần tử dùng update(). Update() có thể nhận tuple, list, strring và set làm đối số. Trong mọi trường hợp, Set có giá trị duy nhất, các bản sao sẽ tự động bị loại bỏ.
 ```
-# Khởi tạo my_set
 my_set = {1,3}
 my_set.add(2)
 print(my_set) # Output: {1, 2, 3}
@@ -565,17 +540,9 @@ Dictionary là tập hợp các cặp khóa giá trị không có thứ tự. N�
 Trong Python, dictionary được định nghĩa trong dấu ngoặc nhọn {} với mỗi phần tử là một cặp theo dạng key:value. Key và value này có thể là bất kỳ kiểu dữ liệu nào. Bạn cũng có thể tạo dictionary bằng cách sử dụng hàm dict() được tích hợp sẵn.
 ```
 dict1 = {} #dictionary rỗng
-
-#dict2 là dictionary với các khóa nguyên
 dict2 = {1: 'Quantrimang.com',2: 'Công nghệ'}
-
-#Tạo dictionary với khóa hỗn hợp
 dict3 = {'tên': 'QTM', 1: [1, 3, 5]}
-
-#Tạo dictionary bằng dict()
 dict4 = dict({1:'apple', 2:'ball'})
-
-#Tạo dictionary từ chuỗi với mỗi mục là một cặp
 dict5 = dict([(1,'QTM'), (2,'CN')])
 ```
 ```
@@ -588,11 +555,9 @@ Các kiểu dữ liệu lưu trữ khác sử dụng index để truy cập vào
 
 Ví dụ
 ```
-#khai báo và gán giá trị dict2
 dict2 = {1: 'Quantrimang.com','quantrimang': 'Công nghệ'} 
 print(type(dict2)) #in kiểu dữ liệu của dict2
 
-#trích xuất dữ liệu bằng khóa rồi in
 print("dict2[1] = ", dict2[1]) 
 print("dict2[quantrimang] = ",dict2['quantrimang'])
 ```
@@ -608,11 +573,9 @@ Dictionary có thể thay đổi, nên có thể thêm phần tử mới hoặc 
 ```
 dict2 = {1: 'Quantrimang.com','quantrimang': 'Công nghệ'}
 
-#cập nhật giá trị
 dict2['quantrimang'] = 'Quản trị mạng'
 print(dict2) #output: {1: 'Quantrimang.com', 'quantrimang': 'Quản trị mạng'}
 
-#thêm phần tử mới
 dict2[2] = 'Python'
 print(dict2) #output: {1: 'Quantrimang.com', 'quantrimang': 'Quản trị mạng', 2: 'Python'}
 ```
@@ -635,7 +598,6 @@ for i in lap_phuong
 ## 7.5 Xóa phần tử từ dictionary
 Bạn có thể xóa phần tử cụ thể của dictionary bằng cách sử dụng pop(), nó sẽ xóa phần tử có key đã cho và trả về giá trị của phần tử. popitem() có thể xóa và trả về một phần tử tùy ý dưới dạng (key, value). Tất cả các phần tử trong dictionary có thể bị xóa cùng lúc bằng cách dùng clear(). Ngoài ra, từ khóa del cũng có thể dùng để xóa một phần tử hoặc toàn bộ dictionary.
 ```
-# tạo dictionary
 binh_phuong = {1:1, 2:4, 3:9, 4:16, 5:25}
 
 print(binh_phuong.pop(4)) # Output: 16
