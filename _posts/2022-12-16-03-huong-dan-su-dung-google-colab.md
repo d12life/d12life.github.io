@@ -39,12 +39,19 @@ Không cần phải suy nghĩ nhiều, khi chọn **Google Colab** thay vì `Jup
 
 Dưới đây là các bước hướng dẫn bạn sử dụng **Google Colab**.
 
-## 2.1 Cài đặt GPU
+## 2.1 Lựa chọn GPU
 Phần cứng mặc định của **Google Colab** là CPU hoặc nó có thể là GPU.
 
-Để cài đặt, bạn hãy hấp vào `Edit` => `Notebook Setting` => `Hardware Accelerator` => `GPU`. Hoặc
+Để lựa chọn GPU, bạn hãy hấp vào `Edit` => `Notebook Setting` => `Hardware Accelerator` => `GPU`. Hoặc
 
 Nhấp vào `Runtime` => `Hardware Accelerator`=> `GPU`
+
+Kiểm tra thông tin GPU được cấp sử dụng lệnh
+```
+!nvidia-smi
+```
+Kết quả
+![image](/assets/images/lesson_6/Screenshot%202023-01-04%20095652.png)
 
 ## 2.2 Running a Cell
 1. Để đảm bảo thời gian chạy được kết nối. Notebook sẽ hiển thị màu xanh lá cây và **Connected** ở góc trên cùng bên phải.

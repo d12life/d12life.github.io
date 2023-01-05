@@ -28,6 +28,13 @@ Tải source code YOLOv7 về Google Drive, project yolov7 đã được clone t
 ```
 Sau chạy block code ở trên, trên Google Drive của các bạn sẽ xuất hiện thư mục yolov7.
 
+Cấu trúc thư mục yolov7 như sau:
+![image](/assets/images\lesson_7/Screenshot%202023-01-05%20092330.png)
+Trong đó
+- cfg: Chứa các file config
+- data: Chứa các thông tin về dữ liệu
+- ...
+
 Chuẩn bị dữ liệu: Ở đây chúng ta sử dụng bộ dữ liệu fire (nguồn miai.vn) để sử dụng cho bài thực hành này.
 - Download bộ dữ liệu (đã được gán nhãn tại https://www.miai.vn/thu-vien-mi-ai/)
 - Upload bộ dữ liệu firedata.zip vào thư mục yolov7/data trên Google Drive.

@@ -172,7 +172,7 @@ Những phương thức có sẵn cho list trong Python gồm:
 - **clear():** Xóa tất cả phần tử của list.
 - **index():** Trả về index của phần tử phù hợp đầu tiên.
 - **count():** Trả về số lượng phần tử đã đếm được trong list như một đối số.
-- **sort():** Sắp xếp các phần tử trong list theo thứ tự tăng dần.
+- **sort():** Sắp xếp các phần tử trong list theo thứ tự tăng dần. Phương thức sort thực hiện ngay trên list được sort và không trả về list mới.
 - **reverse():** Đảo ngược thứ tự các phần tử trong list.
 - **copy():** Trả về bản sao của list.
 
