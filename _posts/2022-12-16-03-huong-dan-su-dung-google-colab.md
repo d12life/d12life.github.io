@@ -50,8 +50,6 @@ Kiểm tra thông tin GPU được cấp sử dụng lệnh
 ```
 !nvidia-smi
 ```
-Kết quả
-![image](/assets/images/lesson_6/Screenshot%202023-01-04%20095652.png)
 
 ## 2.2 Running a Cell
 1. Để đảm bảo thời gian chạy được kết nối. Notebook sẽ hiển thị màu xanh lá cây và **Connected** ở góc trên cùng bên phải.

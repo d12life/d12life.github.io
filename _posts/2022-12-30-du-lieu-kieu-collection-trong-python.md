@@ -1,7 +1,7 @@
 ---
 layout: post
 author: d12life
-title: Bài 9 - Giới thiệu một số kiểu dữ liệu trong Python
+title: Bài 9 - Dữ liệu kiểu Collection và thao tác với dữ liệu kiểu Collection trong Python
 ---
 
 Python là một trong số ngôn ngữ lập trình phổ biến nhất hiện nay với nhiều kiểu dữ liệu vô cùng đa dạng và phong phú. Trong bài viết này chúng ta chỉ đi sâu tìm hiểu một số kiểu dữ liệu cấp cao như List và Dictionary, các kiểu dữ liệu còn lại như int, float, Boolean sẽ không được xem xét trong phạm vi của bài viết này.
@@ -70,7 +70,7 @@ Thêm phần tử mới vào cuối list sử dụng `append()`
 [1, 8, 27, 64, 125, 216]
 ```
 
-Việc gán một dải các phần tử (slice) cho list cũng có thể thực hiện được, gán dải cho list đôi khi làm thay đổi cả kích thước của list hoặc xóa nó hoàn toàn.
+Việc gán một dải các phần tử (`slice`) cho list cũng có thể thực hiện được, gán dải cho list đôi khi làm thay đổi cả kích thước của list hoặc xóa nó hoàn toàn.
 ```
 >>> letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 >>> letters
@@ -637,5 +637,67 @@ lap_phuong_chan = {x: x*x*x for x in range (10) if x%2==0}
 print(lap_phuong_chan) # output: {0: 0, 2: 8, 4: 64, 6: 216, 8: 512}
 ```
 
-# 5. Tham khảo
+# 5. Hàm zip() với các dữ liệu dạng Collection
+**Hàm zip() trong Python** trả về một đối tượng zip, là một iterator dạng danh sách các tuple kết hợp các phần tử từ các iterator (được tạo thành từ các iterable) khác.
+
+## Cú pháp hàm zip() trong Python
+```
+zip(*iterable)
+```
+*(Iterable là một đối tượng sau khi sử dụng các phương thức sẽ trả về một iterator, ví dụ như Chuỗi, List, Tuple).*
+
+Tham số *iterable*: các iterable được tích hợp sẵn (như list, string, dict) hoặc iterable do người dùng khai báo (được tạo thành từ phương thức `__iter__`)
+
+Hàm zip () trả về một iterator của các bộ dữ liệu tuple dựa trên iterable object.
+- Nếu không có tham số nào được truyền, zip() trả về một iterator rỗng.
+- Nếu tham số được truyền chỉ có duy nhất một iterable, zip() trả về tuple có 1 phần tử.
+- Nếu tham số được truyền có nhiều iterable và độ dài của các iterable không bằng nhau, zip sẽ tạo các tuple có độ dài bằng với số iterable nhỏ nhất.
+
+## zip các đối tượng
+Ví dụ 1: Cách zip() hoạt động trong Python
+```
+numberList = [1, 2, 3]
+strList = ['one', 'two', 'three']
+
+result = zip() # Không truyền iterable
+resultList = list(result) # Chuyển đổi iterator thành list
+print(resultList) # Output: List rỗng
+
+result = zip(numberList, strList) # Truyền 2 iterator
+resultSet = set(result) # Chuyển đổi iterator thành set
+print(resultSet) # Output: {(2, 'two'), (3, 'three'), (1, 'one')}
+```
+
+Ví dụ 2: Các iterator có số phần tử khác nhau
+```
+numbersList = [1, 2, 3]
+strList = ['one', 'two']
+numbersTuple = ('ONE', 'TWO', 'THREE', 'FOUR')
+
+result = zip(numbersList, numbersTuple)
+resultSet = set(result) # Chuyển đổi thành set
+print(resultSet) # Output: {(2, 'TWO'), (3, 'THREE'), (1, 'ONE')}
+
+result = zip(numbersList, strList, numbersTuple)
+resultSet = set(result) # Chuyển đổi thành set
+print(resultSet) {(2, 'two', 'TWO'), (1, 'one', 'ONE')}
+```
+
+## Unzip các đối tượng
+Toán tử * có thể được sử dụng cùng với zip() để giải nén danh sách.
+
+Ví dụ 3: Giải nén giá trị bằng cách sử dụng zip()
+```
+coordinate = ['x', 'y', 'z']
+value = [3, 4, 5, 0, 9]
+result = zip(coordinate, value)
+resultList = list(result)
+print(resultList) # Output: [('x', 3), ('y', 4), ('z', 5)]
+
+c, v = zip(*resultList)
+print('c =', c) # Output: c = ('x', 'y', 'z')
+print('v =', v) # Output: v = (3, 4, 5)
+```
+
+# 6. Tham khảo
 1. [https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881](https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881)

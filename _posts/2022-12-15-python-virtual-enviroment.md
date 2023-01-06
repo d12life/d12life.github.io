@@ -6,8 +6,8 @@ title: Bài 3 - Hướng dẫn tạo môi trường ảo trong Python
 
 Trong Python, môi trường ảo được sử dụng để cô lập môi trường của các dự án với nhau (ví dụ như trong trường hợp các dự án khác nhau yêu cầu các phiên bản khác nhau của cùng một thư viện). Môi trường ảo cho phép bạn cài đặt và quản lý các gói cài đặt một cách riêng rẽ và không xung đột với trình quản lý gói cài đặt của toàn hệ thống.
 
-# 1. Cài đặt Virtual Environment thủ công
-## 1.1. Cài đặt Virtual Enviroment
+# 1. Virtual Environment
+## 1.1. Cài đặt
 Có hai công cụ chính được sử dụng để tạo môi trường ảo:
 - virtualenv là công cụ tiêu chuẩn trong nhiều năm, có thể được sử dụng với cả Python 2 và 3.
 - venv (pyvenv) được thêm vào thư viện chuẩn trong Python 3.3.
@@ -18,7 +18,7 @@ Cả hai công cụ đều giúp bạn tạo môi trường ảo cho project Pyt
 **Lưu ý**: *venv* không cho phep tạo virtual enviroments với những phiên bản python khác nhau. Để làm điều này chúng ta cần cài đặt và sử dụng *virtualenv* package.
 Please note that venv does not permit creating virtual environments with 
 
-## 1.2. Tạo môi trường:
+## 1.2. Tạo môi trường
 
 Ở đây chúng ta sử dụng venv
 
@@ -104,4 +104,4 @@ Bằng cách trên, các thông tin về gói cài đặt của dự án bao g�
 1. [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/)
 2. [Python Virtual Environments in Five Minutes](https://chriswarrick.com/blog/2018/09/04/python-virtual-environments/)
 3. [Pipenv & Virtual Environments](https://docs.python-guide.org/dev/virtualenvs/)
-4. https://zootopi.dev/tutorial/python/anaconda/
+4. [https://zootopi.dev/tutorial/python/anaconda/](https://zootopi.dev/tutorial/python/anaconda/)

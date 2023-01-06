@@ -90,11 +90,8 @@ https://www.postman.com/downloads/
 
 2. Thực hiện call API từ 
     - Thông tin API URI được sử dụng: /rest/api/2/project
-
     - Nhập thông tin user/pass trên Postman để xác thực.
-
 3.  Export response và thực hiện convert thành file excel
-    
     Tool để convert response (dạng json) về file excel khá phổ biến trên internet và sẽ không được đề cập ở đây.
 
 ## 8.2 Lấy ra danh dách tất cả các Project thuộc về một thành viên

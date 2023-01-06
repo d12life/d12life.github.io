@@ -122,6 +122,122 @@ Trong trường hợp có issue trong khi load các lớp (classes), chúng ta c
 2. Remove the .labelImgSettings.pkl from your home directory. In Linux and Mac you can do:
 rm ~/.labelImgSettings.pkl
 
-# 5. Tham khảo
+# 5. Chia tập dữ liệu
+Tập dữ liệu sau khi được gán nhãn sẽ cần được phân chia thành các tập con như train, valid, test, ... tùy thuộc vào yêu cầu của từng bài toán
+
+## 5.1 Phân chia tập dữ liệu cho Yolov7
+Dữ liệu dùng để training Yolov7 sẽ được chia thành 2 tập là train và valid, chúng ta sẽ code một đoạn code nhỏ sử dụng để phân chia như sau:
+```
+import glob
+import random
+import os
+import shutil
+
+# Get all paths to your images files and text files
+PATH = '/content/drive/MyDrive/yolov7/data/train_data/'
+img_paths = glob.glob(PATH+'*.jpg')
+img_paths.sort()
+txt_paths = glob.glob(PATH+'*.txt')
+txt_paths.sort()
+
+# print(img_paths[-5:])
+# print(txt_paths[-5:])
+
+# Calculate number of files for training, validation
+data_size = len(img_paths)
+r = 0.8
+train_size = int(data_size * 0.8)
+
+# Shuffle two list
+img_txt = list(zip(img_paths, txt_paths))
+# print(len(img_txt))
+random.seed(43)
+random.shuffle(img_txt)
+img_paths, txt_paths = zip(*img_txt)
+
+# print(img_paths[:5])
+# print(txt_paths[:5])
+
+# Now split them
+train_img_paths = img_paths[:train_size]
+train_txt_paths = txt_paths[:train_size]
+
+# print(train_img_paths[:5])
+# print(train_txt_paths[:5])
+
+valid_img_paths = img_paths[train_size:]
+valid_txt_paths = txt_paths[train_size:]
+
+# print(valid_img_paths[:5])
+# print(valid_txt_paths[:5])
+
+# Move them to train, valid folders
+train_image_folder = PATH+'train/images'
+train_label_folder = PATH+'train/labels'
+valid_image_folder = PATH+'valid/images'
+valid_label_folder = PATH+'valid/labels'
+if os.path.exists(train_image_folder) == False:
+  os.mkdir(train_image_folder)
+if os.path.exists(train_label_folder) == False:
+  os.mkdir(train_label_folder)
+if os.path.exists(valid_image_folder) == False:
+  os.mkdir(valid_image_folder)
+if os.path.exists(valid_label_folder) == False:
+  os.mkdir(valid_label_folder)
+
+def move(paths, folder):
+    for p in paths:
+        shutil.move(p, folder)
+
+move(train_img_paths, train_image_folder)
+move(train_txt_paths, train_label_folder)
+move(valid_img_paths, valid_image_folder)
+move(valid_txt_paths, valid_label_folder)
+```
+
+## 5.2 Kiểm tra dữ liệu trước khi training
+Việc training lại một model cần rất nhiều thời gian, do vậy chúng ta cần hết sức hạn chế việc phải training lại model do những sai sót về mặt dữ liệu. Chúng ta dùng đoạn code nhở sau đây để kiểm tra dữ liệu Yolov7 vừa được phân chia như sau:
+```
+%cd /content/drive/MyDrive/yolov7/data/
+
+import glob2
+import math  
+import os
+import numpy as np
+
+# Kiểm tra số lượng ảnh trong thư mục image và label có cùng số lượng hay ko
+image_files = []
+for ext in ["*.png", "*.jpeg", "*.jpg"]:
+  images = glob2.glob(os.path.join("train_data/train/images", ext))
+  image_files += images
+
+print('Tổng số file ảnh dùng để train: ' + str(len(image_files)))
+
+label_files = []
+for ext in ["*.txt"]:
+  labels = glob2.glob(os.path.join("train_data/train/labels", ext))
+  label_files += labels
+
+print('Tổng số file label dùng để train: ' + str(len(label_files)))
+
+# Kiểm tra ảnh có file label hay ko
+# Nếu ko in tổng số file ko trùng nhau và tên ảnh ko có label
+temp_lst = []
+for label in label_files:
+  la = label.split('/')[-1].split('.')[0]
+  temp_lst.append(la)
+
+miss_lst = []
+for image in image_files:
+  im = image.split('/')[-1].split('.')[0]
+  if (im in temp_lst) == False:
+    print('Missing label for: ' + image)
+    miss_lst.append(image)
+
+print('Total missing label: ' + str(len(miss_lst)))
+```
+
+# 6. Tham khảo
 1. [https://blog.vinbigdata.org/garbage-in-garbage-out-tu-goc-do-gan-nhan-du-lieu/](https://blog.vinbigdata.org/garbage-in-garbage-out-tu-goc-do-gan-nhan-du-lieu/)
 2. [https://pypi.org/project/labelImg/](https://pypi.org/project/labelImg/)
+3. [https://d12life.github.io/2022/12/30/du-lieu-kieu-collection-trong-python.html](https://d12life.github.io/2022/12/30/du-lieu-kieu-collection-trong-python.html)
