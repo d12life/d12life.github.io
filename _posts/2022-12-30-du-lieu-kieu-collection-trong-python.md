@@ -699,5 +699,49 @@ print('c =', c) # Output: c = ('x', 'y', 'z')
 print('v =', v) # Output: v = (3, 4, 5)
 ```
 
-# 6. Tham khảo
+# 6. Sử dụng hàm enumerate()
+
+>enumerate(iterable, start=0)
+
+Trong đó:
+- **iterable**: chuỗi, list, tuple, iterator hoặc bất cứ đối tượng hỗ trợ iteration nào.
+- **start**: enumerate() bắt đầu bộ đếm từ số này. Nếu tham số start bị bỏ qua thì 0 sẽ là giá trị mặc định được gán.
+
+Hàm enumerate() thêm vào một bộ đếm vào trước mỗi iterable và trả về kết quả dưới dạng đối tượng liệt kê. Các đối tượng enumerate này sau đó có thể được sử dụng trực tiếp trong các vòng lặp hoặc được chuyển đổi thành một danh sách, một tuple bằng phương thức list() và tuple().
+
+Ví dụ 1: Cách hàm enumerate hoạt động trong Python
+```
+names = ['Bob', 'Alice', 'Guido']
+print(type(enumerate(names)))
+print(list(enumerate(names))) # chuyển đổi thành một danh sách
+print(list(enumerate(names, 10))) # bộ đếm chỉ định số bắt đầu
+```
+Output
+```
+<class 'enumerate'>
+[(0, 'Bob'), (1, 'Alice'), (2, 'Guido')]
+[(10, 'Bob'), (11, 'Alice'), (12, 'Guido')]
+```
+
+Ví dụ 2: Vòng lặp trên đối tượng enumerate
+```
+names = ['Bob', 'Alice', 'Guido']
+for index, value in enumerate(names):
+    print(f'{index}: {value}')
+
+//output: 
+0: Bob
+1: Alice
+2: Guido
+
+for index, value in enumerate(names, 1):
+    print(f'{index}: {value}')
+
+//output: 
+1: Bob
+2: Alice
+3: Guido
+```
+
+# 7. Tham khảo
 1. [https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881](https://quantrimang.com/hoc/gioi-thieu-qua-ve-chuoi-so-list-trong-python-140881)
