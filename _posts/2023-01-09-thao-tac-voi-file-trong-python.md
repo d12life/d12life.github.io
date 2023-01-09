@@ -3,7 +3,13 @@ layout: post
 author: d12life
 title: Bài 10 - Thao tác file trong Python
 ---
-Thao tác với file và folder là một thao tác quan trọng trong bất kỳ ngôn ngữ lập trình nào. Thao tác với file và folder có thể chia làm 2 loại: Thao tác không tác động đến nội dung file và thao tác tác động đến nội dung file. Trong bài viết này với thao tác không tác động đến nội dung file chúng ta sẽ xem xét 3 module là `os`, `shutil` và `glob` trong khi đó đối với thao tác tác động đến nội dung file chúng ta sẽ xem xét cách thức Python open file, thao tác và close.
+Thao tác với file và folder là một thao tác quan trọng trong bất kỳ ngôn ngữ lập trình nào. Thao tác với file và folder có thể chia làm 2 loại: Thao tác không tác động đến nội dung file và thao tác tác động đến nội dung file. Trong bài viết này với thao tác không tác động đến nội dung file chúng ta sẽ xem xét 3 module là `os`, `shutil` và `glob` trong khi đó đối với thao tác tác động đến nội dung file chúng ta sẽ xem xét cách thức Python open file, thao tác và close file.
+
+Trước khi thao tác file chúng ta có thể kiểm tra sự tồn tại của file/folder sử dụng các phương thức sau:
+- **os.path.exists()**: Kiểm tra tồn tại của đường dẫn trong python
+- **os.path.isfile()**: Kiểm tra tồn tại của file trong python
+- **os.path.isdir()**: Kiểm tra tồn tại của thư mục trong python
+- **Path.exists()**: Kiểm tra tồn tại của file và thư mục trong python
 
 # 1. Thao tác không tác động đến nội dung file
 Các thao tác không tác động đến nội dung file có thể kể đến như di chuyển giữa các thư mục, lấy ra danh sách, đổi tên, xóa file, ... Các thao tác này sẽ được xem xét qua 3 module như sau:
@@ -211,10 +217,161 @@ for name in p.glob('**/*.txt'):
 Output: #./user/pass.txt, #./user/directdirec.txt, #./user/user.txt, #./user/dir2/name.txt
 ```
 
-# 2. Thao tác có tác động đến nội dung file
+# 2. Thao tác có tác động đến nội dung file (đọc/ghi file)
+Trong Python có 2 loại file:
 
+Text file
+- Được cấu trúc như một dãy các dòng, mỗi dòng bao gồm một dãy các kí tự và một dòng tối thiểu là một kí tự dù cho dòng đó là dòng trống.
+- Các dòng trong text file được ngăn cách bởi một kí tự newline và mặc định trong Python chính là kí tự `escape sequence newline` **\n**.
+
+Binary file
+- Các file này chỉ có thể được xử lí bởi một ứng dụng biết và có thể hiểu được cấu trúc của file này.
+- Và chúng ta ở đây với mức độ cơ bản chỉ xử lí text file.
+
+## Mở file file
+```
+open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+```
+
+Ở mức độ cơ bản chúng ta chỉ cần quan tâm đến  đối số
+- file: Đường dẫn file chúng ta muốn thao tác
+- mode: Các mode tác động đến file được mô tả như bảng bên dưới
+
+mode|Mục đích truy cập              
+----|-------------------------------
+r   |Mở để đọc, đây là mode mặc định. Con trỏ tệp trỏ vào đầu tệp.
+r+  |Mở để đọc và ghi. Con trỏ tệp trỏ vào đầu tệp.
+w   |Mở để ghi. Trước đó nó sẽ xóa hết nội dung file hiện có. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+w+  |Mở để ghi và đọc. Trước đó nó cũng xóa hết nội dung của file hiện có. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+a   |Mở để ghi theo kiểu nối thêm (append). Con trỏ tệp trỏ vào cuối tệp. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+a+  |Mở để ghi theo kiểu nối thêm (append) và đọc. Con trỏ tệp trỏ vào cuối tệp. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+
+## Đóng file
+```
+<File>.close()
+```
+
+Tại sao chúng ta nên đóng file sau khi hoàn tất công việc với file?
+- Lãng phí tài nguyên, chưa được đóng sẽ chiếm dụng tài nguyên máy tính đặc biệt là các file có dung lượng lớn.
+- Lock file, hệ điều hành sẽ không cho các chương trình khác có thể xử lý trên file để đảm bảo tính nhất quán của dữ liệu.
+
+Khi chương trình thực hiện xong, tất cả các file đang mở sẽ được đóng lại. Tuy nhiên để giải phóng tài nguyên và không chiếm giữ quyền truy cập chúng ta nên đóng file ngày khi có thể.
+
+## Đọc file
+### Phương thức read
+```
+<File>.read(size=-1)
+```
+
+Trong đó: 
+- `size` là số ký tự sẽ được đọc, nếu size=-1 hoặc không truyền vào thì phương thức sẽ đọc hết và đưa con trỏ xuống cuối file.
+- Phương thức trả về nội dung dạng chuỗi các ký tự, nếu file trống hoặc con trỏ đã ở cuối file giá trị trả về sẽ là một chuỗi rỗng.
+
+### Phương thức readline
+```
+<File>.readline(size=-1)
+```
+Trong đó: Tham số size được áp dụng cho dòng thay vì cho toàn bộ file như phương thức read(). Size là số ký tự muốn đọc trên dòng, nếu không truyền hoặc size=-1 thì đọc toàn bộ dòng.
+
+Một số lưu ý với phương thức readlin() như sau:
+- Phương thức readline chỉ đọc từng dòng một (đọc tới khi nào gặp newline hoặc hết file thì ngừng).
+- Con trỏ file cũng sẽ đi từ dòng này qua dòng khác.
+- Kết quả đọc được trả về dưới dạng một chuỗi.
+- Nếu không đọc được gì, phương thức sẽ trả về một chuỗi có độ dài bằng 0.
+
+### Phương thức readlines
+```
+<File>.readlines(hint=-1)
+```
+Trong đó: `hint` là số byte gợi ý trả về. Nếu số byte được trả về vượt quá số gợi ý, sẽ không có dòng nào được trả về nữa. Giá trị mặc định là -1, có nghĩa là tất cả các dòng sẽ được trả về.
+
+Phương thức này sẽ đọc toàn bộ file, sau đó cho chúng vào một list. Với các phần tử trong list là mỗi dòng của file.
+
+Con trỏ file sẽ được đưa  tới cuối file. Khi đó, nếu bạn tiếp tục dùng readlines. Bạn sẽ nhận được một list rỗng.
+
+### Đọc file bằng constructor nhận iterable
+File object nhận được từ hàm open cũng là một **iterable**. Do đó ta có thể sử dụng constructor list.
+```
+>>> fobj = open('kteam.txt')
+>>> list_content = list(fobj)
+>>> list_content
+['How Kteam\n', 'Free Education\n', '\n', 'Share to better\n', '\n', "print('hello world!')\n"]
+>>> fobj.close()
+```
+Và cũng có thể là Tuple.
+```
+>>> fobj = open('kteam.txt')
+>>> tup_content = tuple(fobj)
+>>> tup_content
+('How Kteam\n', 'Free Education\n', '\n', 'Share to better\n', '\n', "print('hello world!')\n")
+>>> fobj.close()
+```
+Các constructor này cũng sẽ đưa con trỏ file xuống cuối file.
+
+## Ghi file trong Python
+### Phương thức write
+```
+<File>.write(text)
+```
+Phương thức này ghi nội dung (`text`) vào file và trả về số kí tự đã được ghi vào. Mỗi lần sử dụng write con trỏ file sẽ được đặt ngay sau kí tự cuối cùng được ghi.
+
+Lưu ý: Khi sử dụng `open()` với mode `w` dữ liệu trong file sẽ bị ghi đè, nếu muốn tiếp tục ghi vào file sẵn có chúng ta sẽ sử dụng mode `a`.
+
+## Kiểm soát con trỏ file
+### Phương thức seek
+```
+<File>.seek(offset, whence=0)
+```
+Phương thức này giúp ta di chuyển con trỏ từ vị trí đầu file qua offset kí tự (offset phải là một số tự nhiên). Nhờ phương thức này, ta có thể ghi nội dung từ bất cứ đâu trong file. Và có thể đọc lại file sau khi ta đưa con trỏ xuống cuối file.
+
+**Lưu ý**: Với Python 3.X, phương thức áp dụng cho text file khi `whence = 0`, áp dụng cho binary file khi `whence = 1` hoặc `whence = 2`. Với Python 2.X chúng ta không cần quan tâm đến vấn đề này.
+```
+>>> fobj = open('kteam.txt')
+>>> fobj.read()
+"How Kteam\nFree Education\n\nShare to better\n\nprint('hello world!')\n"
+>>> fobj.read()
+''
+>>> fobj.seek(0)
+0
+>>> fobj.read()
+"How Kteam\nFree Education\n\nShare to better\n\nprint('hello world!')\n"
+>>> fobj.seek(10)
+10
+>>> fobj.read()
+"\nFree Education\n\nShare to better\n\nprint('hello world!')\n"
+>>> fobj.close()
+```
+
+## Câu lệnh with
+```
+with expression [as variable]:
+    with-block    
+```
+Câu lệnh này liên quan đến phương thức __enter__ và __exit__ của đối tượng. Do đó, ở đây chúng ta sẽ nói cơ bản khi sử dụng file.
+
+Đặc điểm của câu lệnh with khi sử dụng với file là. Khi kết thúc with-block. File sẽ được đóng.
+```
+>>> with open('kteam.txt') as fobj:
+...     data = fobj.read()
+...
+>>> data
+"How Kteam\nFree Education\n\nShare to better\n\nprint('hello world!')\n"
+>>> fobj.read() # không thể đọc file, vì file đã đóng
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: I/O operation on closed file.
+```
+Tất nhiên, có thể sử dụng câu lệnh with kết hợp với toán tử :=
+```
+>>> with (fi := open("kteam.txt", 'r')):
+...   data = fi.read()
+...
+>>> data
+"How Kteam\nFree Education\n\nShare to better\n\nprint('hello world!')\n"
+```
 
 # 3. Tham khảo
 1. [https://blog.luyencode.net/module-os-trong-python/](https://blog.luyencode.net/module-os-trong-python/)
 2. [https://cuccode.com/python_os_and_shutil.html](https://cuccode.com/python_os_and_shutil.html)
 3. [https://laptrinhcanban.com/python/nhap-mon-lap-trinh-python/xu-ly-file-trong-python/lay-danh-sach-ten-file-va-thu-muc-theo-dieu-kien-trong-python/](https://laptrinhcanban.com/python/nhap-mon-lap-trinh-python/xu-ly-file-trong-python/lay-danh-sach-ten-file-va-thu-muc-theo-dieu-kien-trong-python/)
+4. [https://howkteam.vn/course/lap-trinh-python-co-ban/xu-ly-file-trong-python-1570](https://howkteam.vn/course/lap-trinh-python-co-ban/xu-ly-file-trong-python-1570)
