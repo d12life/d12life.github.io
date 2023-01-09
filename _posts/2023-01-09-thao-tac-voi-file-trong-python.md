@@ -17,13 +17,13 @@ Các thao tác không tác động đến nội dung file có thể kể đến 
 ## 1.1 Module os
 Có khá nhiều các phương thức trong module os, tuy nhiên trong thực tế chúng ta không cần nhớ hết tất cả các hàm, phương thức này. Ở đây chúng ta sẽ chỉ giới thiệu một vài phương thức chính.
 
-## os.getcwd():
+### os.getcwd():
 Hàm **getcwd()** trả về thư mục làm việc hiện tại của một tiến trình.
 
-## os.listdir()
+### os.listdir()
 Phương thức này sẽ liệt kê tất cả các tệp, thư mục của đường dẫn được truyền vào
 
-## os.walk()
+### os.walk()
 Phương thức này sẽ duyệt qua hệ thống cây thư mục và trả về thông tin cây thư mục được bắt đầu từ đường dẫn được truyền vào bằng cách di di chuyển trên cây thư mục từ trên xuống hoặc từ dưới lên (dựa vào tham số topdown). Phương thức trả về một bộ gồm 3 thông tin sau (root, dirs, files).
 - **root:** Chỉ: in ra các thư mục từ những gì bạn đã chỉ định.
 - **dirs:** in ra các thư mục con từ root.
@@ -53,18 +53,18 @@ F:\code\test
 --------------------------------
 ```
 
-## os.chdir()
+### os.chdir()
 Phương thức để thay đổi thư mục làm việc hiện tại
 
-## Tạo thư mục/file bằng os.mkdir() và os.makdedirs()
+### Tạo thư mục/file bằng os.mkdir() và os.makdedirs()
 Phương thức os.mkdir() cho phép chúng ta tạo thư mục/file ở đường dẫn được truyền. Sự khác biệt giữa mkdir() và makedirs() như sau
 - os.makedirs('dirA/dirB') sẽ tạo cả thư mục A và thư mục B nếu thư mục A chưa tồn tại
 - mkdir('dirA/dirB') sẽ tạo thư mục B nếu thư mục A đã tồn tại, nếu thư mục A chưa tồn tại phương thức này sẽ báo lỗi.
 
-## os.rename()
+### os.rename()
 Phương thức cho phép đổi tên file/thư mục.
 
-## os.remove("my_file_path")
+### os.remove("my_file_path")
 Xóa file ở đường dẫn được truyền vào.
 
 Ngoài os.remove chúng ta cũng có thể sử dụng:
@@ -73,7 +73,7 @@ Ngoài os.remove chúng ta cũng có thể sử dụng:
 - **pathlib.Path.unlink():** removes the file or symbolic link.
 - **pathlib.Path.rmdir():** removes the empty directory.
 
-## os.path.join()
+### os.path.join()
 Module os.path chứa khá nhiều phương thức hữu ích cho các thao tác phổ biến để quản lý thư mục và file. Bạn có thể sử dụng nó để tìm thông tin về tên thư mục, các phần của tên thư mục, kiểm tra xem một tập tin hoặc thư mục tồn tại hay không ...
 
 os.path.join() cho phép bạn có thể nối các đường dẫn với nhau theo để tạo nên 1 đường dẫn hoàn chỉnh và phù hợp nhất. Thay vì phải đau đầu sửa code để tạo đường dẫn theo từng hệ điều hành khác nhau, phương thức này sẽ giúp bạn tạo ra đường dẫn phù hợp nhất.
