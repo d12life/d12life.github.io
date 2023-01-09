@@ -108,7 +108,7 @@ trong khi di chuyển.
 
 Thường thì `shutil.move` sẽ gọi lại `os.rename` trong hầu hết các trường hợp, tuy nhiên nếu đường dẫn đích nằm trên một đĩa khác với nguồn thì hàm này sẽ không sử dụng `os.rename` mà sẽ sao chép file trước bằng `shutil.copy2` sau đó xóa file nguồn. Nguyên nhân là os.rename sẽ chỉ làm việc khi đường dẫn nguồn và đường dẫn đích nằm trên cùng một ổ đĩa.
 
-### Lấy danh sách tên file và thư mục theo điều kiện trong python | glob.glob()
+## 1.3 Lấy danh sách tên file và thư mục theo điều kiện trong python | glob.glob()
 Để lấy danh sách tên file và thư mục phù hợp với điều kiện chỉ định, chúng ta sử dụng hàm glob.blog() với cú pháp sau đây:
 ```
 glob.glob(pattern, *, recursive=False)
@@ -158,7 +158,7 @@ data/
 |-move.py
 ```
 
-### Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | recursive = True
+## 1.4 Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | recursive = True
 Khi sử dụng hàm glob.glob() để lấy danh sách file và thư mục theo điều kiện trong python, nếu chúng ta chỉ định giá trị đối số `recursive = True`, một danh sách đệ quy bao gồm cả các file và thư mục chứa trong thư mục con cũng sẽ được lấy ra.
 
 Và nếu chỉ định `pattern` của bằng ký tự đặc biệt `*`, chúng ta có thể chỉ định điều kiện để lấy file và thư mục ra.
@@ -175,7 +175,7 @@ Ngoài ra, chúng ta sử dụng cách viết `tên thư mục` + `/**` để l�
 print(glob.glob('user/**', recursive=True)) #Output: ['./user/', './user/dir1', './user/dir2','./user/dir2/name.txt']
 ```
 
-### Lấy danh sách tên file và thư mục theo điều kiện trong python | Path.glob()
+## 1.5 Lấy danh sách tên file và thư mục theo điều kiện trong python | Path.glob()
 Chúng ta cũng có thể sử dụng phương thức Path.glob() tích hợp trong module pathlib để lấy danh sách tên file và thư mục theo điều kiện trong python, với cú pháp sau đây:
 ```
 Path.glob(pattern)
@@ -200,7 +200,7 @@ for name in p.glob('./user/????.txt'):
 Output: # pass.txt, # user.txt
 ```
 
-### Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | Path.glob()
+## 1.6 Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | Path.glob()
 Tương tự với hàm glob.glob(), chúng ta cũng có thể sử dụng phương thức path.glob() để lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python.
 Có một điểm khác là hàm glob.glob() cần chỉ định `recursive=True` làm đối số thì mới có thể xử lý đệ quy, trong khi với phương thức path.glob() thì về mặc định xử lý đã là xử lý đệ quy rồi.
 Chúng ta sẽ kết hợp cách viết ``**`` khi chỉ định pattern của đường dẫn như sau:
