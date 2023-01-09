@@ -93,9 +93,6 @@ shutil.copy2('/src/dir/file.ext', '/dst/dir/newname.ext')       # complete targe
 shutil.copy2('/src/file.ext', '/dst/dir')                       # target filename is /dst/dir/file.ext
 ```
 
-Bảng dưới đây cho biết chi tiết hơn về các hàm copy khác nhau hỗ trợ bởi shutil:
-![image](/assets/images/lession_10/Screenshot%202023-01-05%20150919.png)
-
 ## shutil.move("source_file", "destination")
 Di chuyển file từ thư mục này sang thư mục khác. Chúng ta cũng có thể dùng `os.rename` để có kết quả tương tự.
 ```
