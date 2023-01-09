@@ -14,7 +14,7 @@ Trước khi thao tác file chúng ta có thể kiểm tra sự tồn tại củ
 # 1. Thao tác không tác động đến nội dung file
 Các thao tác không tác động đến nội dung file có thể kể đến như di chuyển giữa các thư mục, lấy ra danh sách, đổi tên, xóa file, ... Các thao tác này sẽ được xem xét qua 3 module như sau:
 
-# 1.1 Module os
+## 1.1 Module os
 Có khá nhiều các phương thức trong module os, tuy nhiên trong thực tế chúng ta không cần nhớ hết tất cả các hàm, phương thức này. Ở đây chúng ta sẽ chỉ giới thiệu một vài phương thức chính.
 
 ## os.getcwd():
@@ -80,10 +80,10 @@ os.path.join() cho phép bạn có thể nối các đường dẫn với nhau t
 
 Lấy ví dụ, khi bạn làm việc hoặc chạy chương trình trên môi trường Unix hoặc MacOS, đường dẫn do os.path.join() tạo ra sẽ có dạng "duong_dan/den/file_hoac_folder", trong khi đó trên Windows thì đường dẫn sẽ là "duong_dan\den\file_hoac_folder". Hoặc khi bạn ghép nối 2 string: "duong_dan/" và "den/file_hoac_folder" thì kết quả sẽ là: "duong_dan//den/file_hoac_folder", trong khi sử dụng os.path.join() ta sẽ được "duong_dan/den/file_hoac_folder" một cách nhanh chóng.
 
-# 1.2 Module shutil
+## 1.2 Module shutil
 Như đã nói ở trên, `shutil` chứa các hàm đặc trưng Python, cho phép người dùng thực hiện nhiều thao tác phức tạp hơn so với os. Các hàm của `shutil` thường gọi lại nhiều hàm của os.
 
-## shutil.copy2("source_file", "destination")
+### shutil.copy2("source_file", "destination")
 Di chuyển file từ thư mục này sang thư mục khác.
 
 Tại sao lại là copy2? Thực ra chúng ta có nhiều hàm copy khác với những mục đích khác nhau, copy2 cho phép copy cả các thông tin về metadata, permissions. Ngoài ra, đối số destination trong copy2 có thể là đường dẫn tới thư mục.
@@ -93,7 +93,7 @@ shutil.copy2('/src/dir/file.ext', '/dst/dir/newname.ext')       # complete targe
 shutil.copy2('/src/file.ext', '/dst/dir')                       # target filename is /dst/dir/file.ext
 ```
 
-## shutil.move("source_file", "destination")
+### shutil.move("source_file", "destination")
 Di chuyển file từ thư mục này sang thư mục khác. Chúng ta cũng có thể dùng `os.rename` để có kết quả tương tự.
 ```
 import os
@@ -108,7 +108,7 @@ trong khi di chuyển.
 
 Thường thì `shutil.move` sẽ gọi lại `os.rename` trong hầu hết các trường hợp, tuy nhiên nếu đường dẫn đích nằm trên một đĩa khác với nguồn thì hàm này sẽ không sử dụng `os.rename` mà sẽ sao chép file trước bằng `shutil.copy2` sau đó xóa file nguồn. Nguyên nhân là os.rename sẽ chỉ làm việc khi đường dẫn nguồn và đường dẫn đích nằm trên cùng một ổ đĩa.
 
-## 1.3 Lấy danh sách tên file và thư mục theo điều kiện trong python | glob.glob()
+### Lấy danh sách tên file và thư mục theo điều kiện trong python | glob.glob()
 Để lấy danh sách tên file và thư mục phù hợp với điều kiện chỉ định, chúng ta sử dụng hàm glob.blog() với cú pháp sau đây:
 ```
 glob.glob(pattern, *, recursive=False)
@@ -158,7 +158,7 @@ data/
 |-move.py
 ```
 
-## 1.4 Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | recursive = True
+### Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | recursive = True
 Khi sử dụng hàm glob.glob() để lấy danh sách file và thư mục theo điều kiện trong python, nếu chúng ta chỉ định giá trị đối số `recursive = True`, một danh sách đệ quy bao gồm cả các file và thư mục chứa trong thư mục con cũng sẽ được lấy ra.
 
 Và nếu chỉ định `pattern` của bằng ký tự đặc biệt `*`, chúng ta có thể chỉ định điều kiện để lấy file và thư mục ra.
@@ -175,7 +175,7 @@ Ngoài ra, chúng ta sử dụng cách viết `tên thư mục` + `/**` để l�
 print(glob.glob('user/**', recursive=True)) #Output: ['./user/', './user/dir1', './user/dir2','./user/dir2/name.txt']
 ```
 
-## 1.5 Lấy danh sách tên file và thư mục theo điều kiện trong python | Path.glob()
+### Lấy danh sách tên file và thư mục theo điều kiện trong python | Path.glob()
 Chúng ta cũng có thể sử dụng phương thức Path.glob() tích hợp trong module pathlib để lấy danh sách tên file và thư mục theo điều kiện trong python, với cú pháp sau đây:
 ```
 Path.glob(pattern)
@@ -200,7 +200,7 @@ for name in p.glob('./user/????.txt'):
 Output: # pass.txt, # user.txt
 ```
 
-## Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | Path.glob()
+### Lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python | Path.glob()
 Tương tự với hàm glob.glob(), chúng ta cũng có thể sử dụng phương thức path.glob() để lấy danh sách đệ quy tên file và thư mục theo điều kiện trong python.
 Có một điểm khác là hàm glob.glob() cần chỉ định `recursive=True` làm đối số thì mới có thể xử lý đệ quy, trong khi với phương thức path.glob() thì về mặc định xử lý đã là xử lý đệ quy rồi.
 Chúng ta sẽ kết hợp cách viết ``**`` khi chỉ định pattern của đường dẫn như sau:
@@ -225,7 +225,7 @@ Binary file
 - Các file này chỉ có thể được xử lí bởi một ứng dụng biết và có thể hiểu được cấu trúc của file này.
 - Và chúng ta ở đây với mức độ cơ bản chỉ xử lí text file.
 
-## Mở file file
+## Mở file
 ```
 open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
 ```
@@ -234,14 +234,14 @@ open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, clo
 - file: Đường dẫn file chúng ta muốn thao tác
 - mode: Các mode tác động đến file được mô tả như bảng bên dưới
 
-mode|Mục đích truy cập              
-----|-------------------------------
-r   |Mở để đọc, đây là mode mặc định. Con trỏ tệp trỏ vào đầu tệp.
-r+  |Mở để đọc và ghi. Con trỏ tệp trỏ vào đầu tệp.
-w   |Mở để ghi. Trước đó nó sẽ xóa hết nội dung file hiện có. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
-w+  |Mở để ghi và đọc. Trước đó nó cũng xóa hết nội dung của file hiện có. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
-a   |Mở để ghi theo kiểu nối thêm (append). Con trỏ tệp trỏ vào cuối tệp. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
-a+  |Mở để ghi theo kiểu nối thêm (append) và đọc. Con trỏ tệp trỏ vào cuối tệp. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+mode |Mục đích truy cập              
+-----|-------------------------------
+r    |Mở để đọc, đây là mode mặc định. Con trỏ tệp trỏ vào đầu tệp.
+r+   |Mở để đọc và ghi. Con trỏ tệp trỏ vào đầu tệp.
+w    |Mở để ghi. Trước đó nó sẽ xóa hết nội dung file hiện có. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+w+   |Mở để ghi và đọc. Trước đó nó cũng xóa hết nội dung của file hiện có. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+a    |Mở để ghi theo kiểu nối thêm (append). Con trỏ tệp trỏ vào cuối tệp. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
+a+   |Mở để ghi theo kiểu nối thêm (append) và đọc. Con trỏ tệp trỏ vào cuối tệp. Nếu file không tồn tại sẽ tạo mộ file với tên file là tên truyền vào.
 
 ## Đóng file
 ```
